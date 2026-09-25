@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 </head>
 <body>
   <section id="loginScreen" class="login-screen">
@@ -42,11 +41,7 @@
       <section id="dashboardView" class="view">
         <div class="hero"><div><span class="eyebrow">Central de trabalho</span><h2>O que precisa de atenção hoje?</h2><p>Registre, acompanhe e encaminhe demandas para o time certo.</p></div><button class="primary" id="newDemandBtn">＋ Nova demanda</button></div>
         <div class="metrics" id="metrics"></div>
-        <div class="grid-2">
-          <article class="card chart-card"><div class="card-heading"><div><span class="eyebrow">Fluxo</span><h3>Demandas por status</h3></div></div><div class="chart-wrap"><canvas id="statusChart"></canvas><p class="chart-fallback" hidden>Gráficos disponíveis quando o Chart.js estiver carregado.</p></div></article>
-          <article class="card chart-card"><div class="card-heading"><div><span class="eyebrow">Prioridade</span><h3>Distribuição atual</h3></div></div><div class="chart-wrap"><canvas id="priorityChart"></canvas></div></article>
-        </div>
-        <article class="card"><div class="card-heading"><div><span class="eyebrow">Acompanhe de perto</span><h3>Demandas recentes</h3></div><button class="text-btn" data-view="demands">Ver todas →</button></div><div id="recentList" class="demand-list"></div></article>
+        <article class="card dashboard-demand-card"><div class="card-heading"><div><span class="eyebrow">Acompanhamento</span><h3>Demandas visíveis</h3></div><button class="text-btn" data-view="demands">Ver todas →</button></div><div class="table-wrap"><table class="dashboard-table"><thead><tr><th>Demanda</th><th>Ponto focal / negócio</th><th>Prioridade</th><th>Status e ações</th></tr></thead><tbody id="recentList"></tbody></table><div id="dashboardEmpty" class="empty" hidden>Nenhuma demanda registrada.</div></div></article>
       </section>
       <section id="demandsView" class="view" hidden>
         <div class="toolbar"><div class="filters"><input id="searchInput" type="search" placeholder="Buscar demanda, tipo ou responsável…"><select id="statusFilter"><option value="">Todos os status</option></select><select id="priorityFilter"><option value="">Todas as prioridades</option><option value="P0">P0</option><option value="P1">P1</option><option value="P2">P2</option><option value="P3">P3</option><option value="P4">P4</option><option value="P5">P5</option><option value="P6">P6</option><option value="P7">P7</option><option value="P8">P8</option><option value="P9">P9</option><option value="X">X (sem prioridade)</option></select></div><div class="toolbar-actions"><button class="secondary" id="exportBtn">↓ Exportar CSV</button><button class="primary" id="newDemandBtn2">＋ Nova demanda</button></div></div>
@@ -57,6 +52,6 @@
   </div>
   <dialog id="demandDialog"><form method="dialog" id="demandForm"><div class="dialog-head"><div><span class="eyebrow">Nova entrada</span><h2>Registrar demanda</h2></div><button type="button" class="close-btn" id="closeDialog">×</button></div><div class="form-grid"><label>Tipo<select name="type" required><option value="">Selecione</option><option>Novo</option><option>Correção</option><option>Atualização</option><option>Melhoria</option></select></label><label>Prioridade<select name="priority" required><option value="P0">P0</option><option value="P1">P1</option><option value="P2">P2</option><option value="P3">P3</option><option value="P4">P4</option><option value="P5">P5</option><option value="P6">P6</option><option value="P7">P7</option><option value="P8">P8</option><option value="P9">P9</option><option value="X">X (sem prioridade)</option></select></label><label>Previsão (horas)<input name="previsao" type="number" min="0" step="0.1" required></label></div><label>Título<input name="title" required maxlength="120" placeholder="Ex.: Revisar fluxo de aprovação"></label><label>Ponto Focal / Negócio<input name="businessOwner" id="businessOwner" required maxlength="120" placeholder="Informe a área ou pessoa de negócio"></label><label>Possui Forms?<select name="possuiForms" id="possuiForms" required><option value="Não">Não</option><option value="Sim">Sim</option></select></label><label>Detalhes / Observação<textarea name="details" rows="4" placeholder="Contexto e resultado esperado"></textarea></label><label id="reasonWrap" class="reason-field">Motivo<select name="reason" id="reasonSelect" disabled></select></label><div class="dialog-actions"><button type="button" class="secondary" id="cancelDialog">Cancelar</button><button class="primary" value="submit">Criar demanda</button></div></form></dialog>
   <dialog id="configDialog"><div class="dialog-head"><div><span class="eyebrow">Ambiente</span><h2>Configuração ativa</h2></div><button class="close-btn" onclick="this.closest('dialog').close()">×</button></div><p id="configText" class="config-text"></p><button class="secondary" onclick="this.closest('dialog').close()">Fechar</button></dialog>
-  <script src="app.js?v=20260925i"></script>
+  <script src="app.js?v=20260925m"></script>
 </body>
 </html>
